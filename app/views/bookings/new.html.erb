@@ -1,0 +1,51 @@
+<% provide(:title, 'New Booking') %>
+<%= form_for(@booking, :html => {class: 'form-inline'}) do |f| %>
+<h1> Booking information </h1>
+<h2>Flight #<%=@flight.id%></h2>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th width ="60">Flight #</th>
+        <th width ="110">From</th>
+        <th width ="110">To</th>
+        <th width ="110">Date</th>
+        <th width ="110">Departs</th>
+        <th width ="110">Flight Duration</th>
+      </th>
+    </thead>
+    <tbody>
+       <tr>
+        <td><%=@flight.id%></th>
+        <td><%=@flight.from_airport.code%></td>
+        <td><%=@flight.to_airport.code%></td>
+        <td><%=@flight.start_datetime.strftime("%B %d, %Y")%></td>
+        <td><%=@flight.start_datetime.strftime('%I:%M:%S %p')%></td>
+        <td><%= distance_of_time_in_words(@flight.flight_duration) %></td>
+      </tr>
+    </tbody>
+  </table>
+
+ <h3>Personal details <small>   Passenger details</small></h3>
+<form>
+ <div class "form-group">
+
+   <%= hidden_field_tag(:flight_id, params[:flight_id]) %>
+   <%= f.hidden_field :flight_id, value: params[:flight_id] %>
+        <% pascount = 0 %>
+        <%= f.fields_for(:passengers) do |p| %>
+                <div class="row">
+                   <div class="col-md-2">
+                      <label>Passenger <%= pascount += 1 %> </label>
+                  </div>
+
+                   <div class="col-md-6">
+
+                   <%= p.text_field :name, placeholder: "Name" %>
+                   <%= p.text_field :email, placeholder: "Email"  %>
+                  </div>
+                </div>
+          <% end %>
+        <%= f.submit "Book Flight", class: "btn btn-primary btn-lg" %>
+    <% end %>
+  </div>
+</form>

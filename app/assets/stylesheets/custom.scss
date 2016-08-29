@@ -1,0 +1,172 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+$light-gray: #777;
+
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+.results {
+  text-align: center;
+  border: 1px solid #C0C0C0;
+
+  padding: 5px;
+
+}
+
+.passengers {
+  padding: 0;
+}
+
+
+.row {
+  position: relative;
+  text-align: center;
+  margin-top: 5px;
+  .columns {
+    display: inline-flex;
+  }
+
+}
+
+.col-md-2 .col-md-6 {
+  padding-left: 0;
+}
+
+form {
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  .btn {
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+}
+
+.ticket {
+  margin-bottom: 100px;
+}
+
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #2C3133;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $light-gray;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+.navbar {
+  background-color: #19B2FF;
+  border: none;
+}
+
+.navbar li {
+  color: #FFFFFF;
+}
+
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+header .container {
+  position: relative;
+  top: 0;
+}
+
+
+/* footer */
+
+footer {
+  margin-top:  70px;
+  padding-top: 5px;
+  padding-left: 10px;
+  border-top: 1px solid #eaeaea;
+  color: $light-gray;
+  clear: both;
+  position: relative;
+  a {
+    color: #555;
+    &:hover {
+      color: #222;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
