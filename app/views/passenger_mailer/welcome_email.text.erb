@@ -1,0 +1,13 @@
+Flight ticket is booked, <%= @user.name.capitalize %>
+==========================================
+You have successfully booked the ticket # <%= @user.flights.last.id %>
+
+  Your booking information:
+
+Booking #<%= @booking.id %>
+Flight from <%= @booking.flight.from_airport.code %> to <%= @booking.flight.to_airport.code %>
+Flight date is <%= @booking.flight.start_datetime%>
+
+Thanks for choosing HighFly App and have a great day!
+
+===============Flying App===================

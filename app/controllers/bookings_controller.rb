@@ -7,15 +7,23 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    if @booking.save
-        redirect_to booking_path(@booking)
-    else
-       @flight = Flight.find(params[:flight_id])
-       flash.now[:danger] = "Make sure the passenger information is correct."
-       render 'new'
+
+    respond_to do |format|
+        if @booking.save
+                @booking.passengers.each do |p|
+                    PassengerMailer.welcome_email(p).deliver_now
+                end
+                format.html { redirect_to(booking_path(@booking), notice: 'Booking was successfully created.') }
+                format.json { render json: @booking, status: :created, location: @booking }
+
+        else
+          @flight = Flight.find(params[:flight_id])
+          flash.now[:danger] = "Make sure the passenger information is correct."
+            format.html { render action: 'new' }
+            format.json { render json: @booking.errors, status: :unprocessable_entity }
+
+        end
     end
-
-
   end
 
   def show
